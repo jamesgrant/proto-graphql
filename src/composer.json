@@ -1,0 +1,6 @@
+{
+    "require": {
+        "leocavalcante/siler": "^1.6",
+        "webonyx/graphql-php": "^0.13.8"
+    }
+}

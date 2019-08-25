@@ -1,0 +1,8 @@
+use graphql;
+
+CREATE TABLE IF NOT EXISTS messages (
+    id INT PRIMARY KEY AUTO_INCREMENT, 
+    roomId INT NOT NULL, 
+    body VARCHAR(255) NOT NULL, 
+    timestamp INT NOT NULL
+) ENGINE=INNODB;
