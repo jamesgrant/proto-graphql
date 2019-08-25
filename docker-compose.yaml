@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  database:
+    image: graphql-mysql
+    build:
+      context: ./docker/graphql-mysql/
+      dockerfile: ./Dockerfile
+    environment:
+      - "MYSQL_DATABASE=graphql"
+      - "MYSQL_USER=graphql"
+      - "MYSQL_PASSWORD=graphqlpass"
+      - "MYSQL_ROOT_PASSWORD=rootpass"
+
+  api:
+    image: graphql-api
+    build:
+      context: ./docker/graphql-api/
+      dockerfile: ./Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./src:/var/www
+    environment:
+      - "MYSQL_HOST=database"
+      - "MYSQL_DATABASE=graphql"
+      - "MYSQL_USERNAME=graphql"
+      - "MYSQL_PASSWORD=graphqlpass"
